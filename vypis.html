@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Auto Bazar — nabídka vozů</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Auto Bazar Teplice — levná ověřená ojetá auta. Ukázkový návrh webu.">
+<link rel="icon" href="/favicon.svg">
+<script src="/morphdom.min.js"></script>
+<script src="/dc-runtime.js"></script>
+</head>
+<body>
+<template id="dc-tpl">
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#f6f5f1}
+a{color:#121212;text-decoration:none}a:hover{color:#121212}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #121212; background: #f6f5f1; font-size: 15px; line-height: 22px; padding-bottom: 80px;">
+
+<header style="background: #ffffff; border-bottom: 1px solid #e4e0d8;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 16px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px;">
+<a href="/" aria-label="Auto Bazar — úvod" style="line-height: 0;"><span role="img" aria-label="Auto Bazar" style="display: inline-flex; height: 42px; border: 3px solid #f6c445; border-radius: 2px; overflow: hidden; box-sizing: border-box; font-family: Montserrat, sans-serif; font-size: 22px; line-height: 1; letter-spacing: .5px;"><span style="background: #ffffff; color: #121212; font-weight: 800; padding: 0 10px; display: flex; align-items: center;">AUTO</span><span style="background: #f6c445; color: #121212; font-weight: 400; padding: 0 10px 0 9px; display: flex; align-items: center;">BAZAR</span></span></a>
+<nav aria-label="Hlavní menu" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1;">
+<a href="/vypis" aria-current="page" style="font-weight: 600; padding: 10px 14px; box-shadow: inset 0 -3px 0 #f6c445;">Nabídka vozů</a>
+<a href="/#vykup" style="font-weight: 600; padding: 10px 14px;">Výkup aut</a>
+<a href="#" style="font-weight: 600; padding: 10px 14px;">Financování</a>
+<a href="/#cebia" style="font-weight: 600; padding: 10px 14px;">Prověření Cebia</a>
+<a href="/#kontakt" style="font-weight: 600; padding: 10px 14px;">Kontakt</a>
+</nav>
+<a href="tel:+420123456789" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 10px; background: #f6c445; color: #121212; font-weight: 700; font-size: 14px;">123 456 789</a>
+</div>
+</header>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: 28px 32px 0;">
+<div style="font-size: 13px; color: #5c5850; margin-bottom: 8px;"><a href="/" style="color: #5c5850;">Úvod</a> / Nabídka vozů</div>
+<h1 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 36px; line-height: 42px; letter-spacing: -.6px; margin: 0;">Nabídka vozů</h1>
+<div style="color: #5c5850; margin-top: 4px;">{{total}} vozů skladem v Teplicích</div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: 24px 32px 0; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;">
+
+<aside aria-label="Filtry" style="flex: 1 1 300px; max-width: 100%; box-sizing: border-box;">
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.nabidka.toggle}}" aria-expanded="{{sec.nabidka.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;">Nabídka<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.nabidka.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.nabidka.open}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{flagOpts}}" as="o" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 12px; padding: 9px 0; cursor: pointer; color: {{o.color}};"><input type="checkbox" checked="{{o.checked}}" disabled="{{o.disabled}}" onChange="{{o.toggle}}" style="width: 22px; height: 22px; margin: 0; accent-color: #121212;"><span style="flex-grow: 1; font-weight: 500;">{{o.label}}</span><span style="display: inline-flex; align-items: center; height: 22px; padding: 0 7px; border-radius: 6px; font-size: 11px; font-weight: 700; background: {{o.tagBg}}; color: {{o.tagFg}};">{{o.tag}}</span><span style="font-size: 13px; color: #5c5850; min-width: 28px; text-align: right;">({{o.count}})</span></label>
+</sc-for>
+</sc-if>
+</div>
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.cena.toggle}}" aria-expanded="{{sec.cena.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;"><span>Cena <span style="font: 600 13px Inter, sans-serif; color: #5c5850;">{{priceSummary}}</span></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.cena.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.cena.open}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+<sc-for list="{{priceChips}}" as="pc" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{pc.on}}" onClick="{{pc.pick}}" style="height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid {{pc.border}}; background: {{pc.bg}}; font: 600 14px Inter, sans-serif; color: #121212; cursor: pointer;">{{pc.label}}</button>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Od
+<span style="display: flex; align-items: center; height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 10px 0 14px;"><input inputmode="numeric" placeholder="0" value="{{priceMin}}" onChange="{{setPriceMin}}" style="flex-grow: 1; min-width: 0; border: 0; outline: 0; font: 600 15px Inter, sans-serif; color: #121212; background: transparent;"><span style="font-size: 12px; font-weight: 700; color: #121212; background: #f6f5f1; border-radius: 6px; padding: 3px 6px;">Kč</span></span></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Do
+<span style="display: flex; align-items: center; height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 10px 0 14px;"><input inputmode="numeric" placeholder="Neomezeně" value="{{priceMax}}" onChange="{{setPriceMax}}" style="flex-grow: 1; min-width: 0; border: 0; outline: 0; font: 600 15px Inter, sans-serif; color: #121212; background: transparent;"><span style="font-size: 12px; font-weight: 700; color: #121212; background: #f6f5f1; border-radius: 6px; padding: 3px 6px;">Kč</span></span></label>
+</div>
+<input type="range" aria-label="Cena do" min="10000" max="150000" step="1000" value="{{priceSlider}}" onChange="{{slidePrice}}" style="width: 100%; margin: 16px 0 4px; accent-color: #121212;">
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #5c5850;"><span>10 000 Kč</span><span>150 000 Kč +</span></div>
+</sc-if>
+</div>
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.znacka.toggle}}" aria-expanded="{{sec.znacka.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;">Značka<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.znacka.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.znacka.open}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{brandOpts}}" as="o" hint-placeholder-count="8">
+<label style="display: flex; align-items: center; gap: 12px; padding: 7px 0; cursor: pointer; color: {{o.color}};"><input type="checkbox" checked="{{o.checked}}" disabled="{{o.disabled}}" onChange="{{o.toggle}}" style="width: 22px; height: 22px; margin: 0; accent-color: #121212;"><span style="width: 40px; height: 40px; flex: none; border-radius: 999px; background: #ffffff; border: 1px solid #e4e0d8; display: grid; place-items: center; opacity: {{o.logoOpacity}};"><img src="{{o.logo}}" alt="" style="width: 22px; height: 22px; display: block;"></span><span style="flex-grow: 1; font-weight: 500;">{{o.label}}</span><span style="font-size: 13px; color: #5c5850;">({{o.count}})</span></label>
+</sc-for>
+</sc-if>
+</div>
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.rok.toggle}}" aria-expanded="{{sec.rok.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;">Rok výroby<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.rok.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.rok.open}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+<sc-for list="{{yearChips}}" as="yc" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{yc.on}}" onClick="{{yc.pick}}" style="height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid {{yc.border}}; background: {{yc.bg}}; font: 600 14px Inter, sans-serif; color: #121212; cursor: pointer;">{{yc.label}}</button>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Od
+<select value="{{yearFrom}}" onChange="{{setYearFrom}}" style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 12px; font: 600 15px Inter, sans-serif; color: #121212;"><sc-for list="{{yearOptions}}" as="yo" hint-placeholder-count="5"><option value="{{yo.v}}">{{yo.l}}</option></sc-for></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Do
+<select value="{{yearTo}}" onChange="{{setYearTo}}" style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 12px; font: 600 15px Inter, sans-serif; color: #121212;"><sc-for list="{{yearOptions}}" as="yo" hint-placeholder-count="5"><option value="{{yo.v}}">{{yo.l}}</option></sc-for></select></label>
+</div>
+</sc-if>
+</div>
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.km.toggle}}" aria-expanded="{{sec.km.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;"><span>Najeto <span style="font: 600 13px Inter, sans-serif; color: #5c5850;">{{kmLabel}}</span></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.km.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.km.open}}" hint-placeholder-val="{{ true }}">
+<input type="range" aria-label="Najeto nejvýše" min="100000" max="600000" step="10000" value="{{kmMax}}" onChange="{{slideKm}}" style="width: 100%; margin: 4px 0; accent-color: #121212;">
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #5c5850;"><span>100 000 km</span><span>Neomezeně</span></div>
+</sc-if>
+</div>
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.palivo.toggle}}" aria-expanded="{{sec.palivo.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;">Palivo<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.palivo.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.palivo.open}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{fuelOpts}}" as="o" hint-placeholder-count="4">
+<label style="display: flex; align-items: center; gap: 12px; padding: 9px 0; cursor: pointer; color: {{o.color}};"><input type="checkbox" checked="{{o.checked}}" disabled="{{o.disabled}}" onChange="{{o.toggle}}" style="width: 22px; height: 22px; margin: 0; accent-color: #121212;"><span style="flex-grow: 1; font-weight: 500;">{{o.label}}</span><span style="font-size: 13px; color: #5c5850;">({{o.count}})</span></label>
+</sc-for>
+</sc-if>
+</div>
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.prevodovka.toggle}}" aria-expanded="{{sec.prevodovka.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;">Převodovka<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.prevodovka.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.prevodovka.open}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{gearOpts}}" as="o" hint-placeholder-count="2">
+<label style="display: flex; align-items: center; gap: 12px; padding: 9px 0; cursor: pointer; color: {{o.color}};"><input type="checkbox" checked="{{o.checked}}" disabled="{{o.disabled}}" onChange="{{o.toggle}}" style="width: 22px; height: 22px; margin: 0; accent-color: #121212;"><span style="flex-grow: 1; font-weight: 500;">{{o.label}}</span><span style="font-size: 13px; color: #5c5850;">({{o.count}})</span></label>
+</sc-for>
+</sc-if>
+</div>
+
+<div style="border-bottom: 1px solid #e4e0d8; padding-bottom: 16px;">
+<button type="button" onClick="{{sec.karoserie.toggle}}" aria-expanded="{{sec.karoserie.open}}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; padding: 16px 0 12px; font: 800 18px/24px Montserrat, sans-serif; color: #121212; cursor: pointer;">Karoserie<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{sec.karoserie.rot}};"><path d="m6 15 6-6 6 6"></path></svg></button>
+<sc-if value="{{sec.karoserie.open}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{bodyOpts}}" as="o" hint-placeholder-count="5">
+<label style="display: flex; align-items: center; gap: 12px; padding: 9px 0; cursor: pointer; color: {{o.color}};"><input type="checkbox" checked="{{o.checked}}" disabled="{{o.disabled}}" onChange="{{o.toggle}}" style="width: 22px; height: 22px; margin: 0; accent-color: #121212;"><span style="flex-grow: 1; font-weight: 500;">{{o.label}}</span><span style="font-size: 13px; color: #5c5850;">({{o.count}})</span></label>
+</sc-for>
+</sc-if>
+</div>
+
+<button type="button" onClick="{{reset}}" style="margin-top: 20px; width: 100%; height: 48px; border-radius: 10px; border: 2px solid #8a8478; background: #ffffff; font: 700 15px Inter, sans-serif; color: #121212; cursor: pointer;">Zrušit všechny filtry</button>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0 16px;">
+<div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 20px;">{{countLabel}}</div>
+<label style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #5c5850; font-size: 14px;">Řadit
+<select value="{{sort}}" onChange="{{setSort}}" style="height: 44px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 12px; font: 600 14px Inter, sans-serif; color: #121212;"><option value="rec">Doporučené</option><option value="cheap">Nejlevnější</option><option value="exp">Nejdražší</option><option value="km">Nejméně najeto</option><option value="year">Nejmladší</option></select></label>
+</div>
+
+<sc-if value="{{hasActive}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 20px;">
+<sc-for list="{{active}}" as="a" hint-placeholder-count="2">
+<button type="button" onClick="{{a.remove}}" aria-label="Odebrat filtr {{a.label}}" style="height: 36px; display: inline-flex; align-items: center; gap: 8px; padding: 0 10px 0 14px; border-radius: 999px; border: 1px solid #e8b12a; background: #fff4d6; font: 600 14px Inter, sans-serif; color: #121212; cursor: pointer;">{{a.label}}<span style="width: 18px; height: 18px; border-radius: 50%; background: #121212; color: #ffffff; display: grid; place-items: center; font-size: 11px; line-height: 1;">✕</span></button>
+</sc-for>
+<button type="button" onClick="{{reset}}" style="background: none; border: 0; font: 700 14px Inter, sans-serif; color: #121212; text-decoration: underline; cursor: pointer; padding: 0 6px;">Zrušit vše</button>
+</div>
+</sc-if>
+
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="background: #ffffff; border: 1px dashed #8a8478; border-radius: 16px; padding: 48px; text-align: center;">
+<div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 22px; margin-bottom: 8px;">Takové auto teď nemáme</div>
+<p style="margin: 0 0 20px; color: #5c5850;">Uvolněte některý filtr, nebo nám zavolejte — dáme vědět, až přijede.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+<button type="button" onClick="{{reset}}" style="height: 48px; padding: 0 22px; border-radius: 10px; border: 0; background: #f6c445; font: 700 15px Inter, sans-serif; cursor: pointer; color: #121212;">Zrušit filtry</button>
+<a href="tel:+420123456789" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 10px; border: 2px solid #8a8478; font-weight: 700;">Zavolat 123 456 789</a>
+</div>
+</div>
+</sc-if>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px;">
+<sc-for list="{{cars}}" as="car" hint-placeholder-count="6">
+<article style="background: #ffffff; border: 1px solid #e4e0d8; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(18,18,18,.06), 0 4px 16px rgba(18,18,18,.06); display: flex; flex-direction: column;">
+<a href="/detail" style="position: relative; display: block; aspect-ratio: 4 / 3; background: #ece9e2;">
+<img src="{{car.img}}" alt="{{car.alt}}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<sc-if value="{{car.badge}}" hint-placeholder-val="{{ true }}"><span style="position: absolute; left: 12px; top: 12px; height: 24px; display: inline-flex; align-items: center; padding: 0 8px; border-radius: 6px; font-size: 12px; font-weight: 700; background: {{car.badgeBg}}; color: {{car.badgeFg}};">{{car.badge}}</span></sc-if>
+</a>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
+<div><a href="/detail" style="font-weight: 700; font-size: 17px; line-height: 22px;">{{car.t}}</a><div style="font-size: 14px; line-height: 20px; color: #5c5850; margin-top: 2px;">{{car.s}}</div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px;">
+<span style="background: #f6f5f1; border-radius: 6px; padding: 4px 8px; font-size: 13px; line-height: 16px; font-weight: 600;">{{car.year}}</span>
+<span style="background: #f6f5f1; border-radius: 6px; padding: 4px 8px; font-size: 13px; line-height: 16px; font-weight: 600;">{{car.kmStr}} km</span>
+<span style="background: #f6f5f1; border-radius: 6px; padding: 4px 8px; font-size: 13px; line-height: 16px; font-weight: 600;">{{car.fuel}}</span>
+<span style="background: #f6f5f1; border-radius: 6px; padding: 4px 8px; font-size: 13px; line-height: 16px; font-weight: 600;">{{car.gear}}</span>
+</div>
+<div style="margin-top: auto; padding-top: 12px; border-top: 1px solid #e4e0d8; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+<div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 22px; line-height: 28px; letter-spacing: -.3px;">{{car.priceStr}} Kč</div>
+<a href="/detail" style="display: inline-flex; align-items: center; height: 44px; padding: 0 14px; border-radius: 10px; border: 2px solid #8a8478; font-weight: 700; font-size: 14px;">Detail →</a>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+
+<div style="margin-top: 40px; background: #121212; color: #ffffff; border-radius: 16px; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+<div><div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 22px; line-height: 28px;">Nenašli jste, co hledáte?</div><div style="margin-top: 4px; color: #b9b4ab;">Řekněte nám, jaké auto chcete — ozveme se, jakmile ho budeme mít.</div></div>
+<a href="tel:+420123456789" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 10px; background: #f6c445; color: #121212; font-weight: 700;">Zavolat 123 456 789</a>
+</div>
+</main>
+</div>
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.initial = { flags: [], brands: [], priceMin: '', priceMax: '', yearFrom: '', yearTo: '', kmMax: 600000, fuels: [], gears: [], bodies: [], sort: 'rec' };
+    this.state = Object.assign({ open: { nabidka: true, cena: true, znacka: true, rok: true, km: true, palivo: true, prevodovka: true, karoserie: false } }, this.initial);
+  }
+  renderVals() {
+    const CARS = [
+      { id: 1, brand: 'Opel', t: 'Opel Corsa', s: '1.2 16V', year: 2003, km: 168400, fuel: 'Benzín', gear: 'Manuál', body: 'Hatchback', price: 24900, nove: false, cebia: false, dph: false, img: '/corsa.webp' },
+      { id: 2, brand: 'Seat', t: 'Seat Ibiza', s: '1.4 16V', year: 2008, km: 152300, fuel: 'Benzín', gear: 'Manuál', body: 'Hatchback', price: 34900, nove: true, cebia: false, dph: false, img: '/ibiza.webp' },
+      { id: 3, brand: 'Volkswagen', t: 'Volkswagen Passat', s: '1.9 TDI', year: 2007, km: 238900, fuel: 'Diesel', gear: 'Manuál', body: 'Sedan', price: 44900, nove: false, cebia: true, dph: false, img: '/passat06.webp' },
+      { id: 4, brand: 'Mercedes-Benz', t: 'Mercedes-Benz třída A', s: 'A 170', year: 2006, km: 142700, fuel: 'Benzín', gear: 'Automat', body: 'MPV', price: 49900, nove: false, cebia: false, dph: false, img: '/merc.webp' },
+      { id: 5, brand: 'Volkswagen', t: 'Volkswagen Passat Variant', s: '2.0 TDI DSG', year: 2012, km: 286400, fuel: 'Diesel', gear: 'Automat', body: 'Kombi', price: 99900, nove: true, cebia: false, dph: false, img: '/passat11.webp' },
+      { id: 6, brand: 'Škoda', t: 'Škoda Superb', s: '2.0 TDI Elegance', year: 2011, km: 274500, fuel: 'Diesel', gear: 'Manuál', body: 'Liftback', price: 119900, nove: false, cebia: true, dph: false, img: '/superb.webp' }
+    ];
+    const st = this.state;
+    const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    const num = (s) => (s === '' || s == null ? null : parseInt(String(s).replace(/\D/g, ''), 10));
+    const pMin = num(st.priceMin), pMax = num(st.priceMax), yFrom = num(st.yearFrom), yTo = num(st.yearTo);
+    const match = (c, skip) => {
+      if (skip !== 'flags' && st.flags.length && !st.flags.every((f) => c[f])) return false;
+      if (skip !== 'brands' && st.brands.length && !st.brands.includes(c.brand)) return false;
+      if (skip !== 'price' && pMin != null && c.price < pMin) return false;
+      if (skip !== 'price' && pMax != null && c.price > pMax) return false;
+      if (skip !== 'year' && yFrom != null && c.year < yFrom) return false;
+      if (skip !== 'year' && yTo != null && c.year > yTo) return false;
+      if (skip !== 'km' && st.kmMax < 600000 && c.km > st.kmMax) return false;
+      if (skip !== 'fuels' && st.fuels.length && !st.fuels.includes(c.fuel)) return false;
+      if (skip !== 'gears' && st.gears.length && !st.gears.includes(c.gear)) return false;
+      if (skip !== 'bodies' && st.bodies.length && !st.bodies.includes(c.body)) return false;
+      return true;
+    };
+    const tog = (key, v) => () => { const a = this.state[key]; this.setState({ [key]: a.includes(v) ? a.filter((x) => x !== v) : a.concat([v]) }); };
+    const facet = (key, field, values) => values.map((v) => {
+      const count = CARS.filter((c) => match(c, key) && c[field] === v).length;
+      const checked = st[key].includes(v);
+      const disabled = !checked && count === 0;
+      const LOGOS = { 'Ford': '/ford.svg', 'Mercedes-Benz': '/mercedes.svg', 'Opel': '/opel.svg', 'Renault': '/renault.svg', 'Seat': '/seat.svg', 'Škoda': '/skoda.svg', 'Toyota': '/toyota.svg', 'Volkswagen': '/volkswagen.svg' };
+      return { label: v, count, checked, disabled, toggle: tog(key, v), color: disabled ? '#a8a39a' : '#121212', logo: LOGOS[v] || '', logoOpacity: disabled ? '0.4' : '1' };
+    });
+    const flagDefs = [['nove', 'Nově v nabídce', 'NOVÉ', '#f6c445', '#121212'], ['cebia', 'Prověřeno Cebia', 'CEBIA', '#ffffff', '#1e7a44'], ['dph', 'S odpočtem DPH', 'DPH', '#121212', '#ffffff']];
+    const flagOpts = flagDefs.map(([f, label, tag, tagBg, tagFg]) => {
+      const count = CARS.filter((c) => match(c, 'flags') && c[f]).length;
+      const checked = st.flags.includes(f);
+      const disabled = !checked && count === 0;
+      return { label, tag, tagBg, tagFg, count, checked, disabled, toggle: tog('flags', f), color: disabled ? '#a8a39a' : '#121212' };
+    });
+    const chip = (on) => ({ on, bg: on ? '#fff4d6' : '#ffffff', border: on ? '#e8b12a' : '#e4e0d8' });
+    const priceChips = [30000, 50000, 120000].map((v) => Object.assign({ label: 'do ' + fmt(v) + ' Kč', pick: () => this.setState({ priceMin: '', priceMax: pMax === v ? '' : String(v) }) }, chip(pMax === v && pMin == null)));
+    const yearChips = [[2010, 'Od 2010'], [2005, 'Od 2005'], [2000, 'Od 2000']].map(([v, label]) => Object.assign({ label, pick: () => this.setState({ yearFrom: yFrom === v ? '' : String(v), yearTo: '' }) }, chip(yFrom === v && yTo == null)));
+    const yearOptions = [{ v: '', l: 'Libovolně' }];
+    for (let y = 2000; y <= 2015; y++) yearOptions.push({ v: String(y), l: String(y) });
+    const sec = {};
+    Object.keys(st.open).forEach((k) => { sec[k] = { open: st.open[k], rot: st.open[k] ? 'none' : 'rotate(180deg)', toggle: () => this.setState({ open: Object.assign({}, this.state.open, { [k]: !this.state.open[k] }) }) }; });
+    let cars = CARS.filter((c) => match(c, null));
+    const sorters = { cheap: (a, b) => a.price - b.price, exp: (a, b) => b.price - a.price, km: (a, b) => a.km - b.km, year: (a, b) => b.year - a.year, rec: (a, b) => (b.nove - a.nove) || (b.cebia - a.cebia) || a.price - b.price };
+    cars = cars.slice().sort(sorters[st.sort]).map((c) => Object.assign({}, c, {
+      alt: c.t + ' ' + c.year, kmStr: fmt(c.km), priceStr: fmt(c.price),
+      badge: c.nove ? 'Nově' : (c.cebia ? 'Prověřeno Cebia' : (c.price <= 30000 ? 'Do 30 000 Kč' : '')),
+      badgeBg: c.nove ? '#f6c445' : (c.cebia ? '#ffffff' : '#fff4d6'), badgeFg: c.cebia && !c.nove ? '#1e7a44' : '#121212'
+    }));
+    const active = [];
+    st.flags.forEach((f) => { const d = flagDefs.find((x) => x[0] === f); active.push({ label: d[1], remove: tog('flags', f) }); });
+    st.brands.forEach((b) => active.push({ label: b, remove: tog('brands', b) }));
+    if (pMin != null || pMax != null) active.push({ label: 'Cena ' + (pMin != null ? 'od ' + fmt(pMin) + ' ' : '') + (pMax != null ? 'do ' + fmt(pMax) : '') + ' Kč', remove: () => this.setState({ priceMin: '', priceMax: '' }) });
+    if (yFrom != null || yTo != null) active.push({ label: 'Rok ' + (yFrom != null ? 'od ' + yFrom + ' ' : '') + (yTo != null ? 'do ' + yTo : ''), remove: () => this.setState({ yearFrom: '', yearTo: '' }) });
+    if (st.kmMax < 600000) active.push({ label: 'Najeto do ' + fmt(st.kmMax) + ' km', remove: () => this.setState({ kmMax: 600000 }) });
+    st.fuels.forEach((v) => active.push({ label: v, remove: tog('fuels', v) }));
+    st.gears.forEach((v) => active.push({ label: v, remove: tog('gears', v) }));
+    st.bodies.forEach((v) => active.push({ label: v, remove: tog('bodies', v) }));
+    const n = cars.length;
+    const word = n === 1 ? 'vůz' : (n >= 2 && n <= 4 ? 'vozy' : 'vozů');
+    return {
+      sec, flagOpts, priceChips, yearChips, yearOptions,
+      brandOpts: facet('brands', 'brand', ['Škoda', 'Volkswagen', 'Opel', 'Seat', 'Mercedes-Benz', 'Ford', 'Toyota', 'Renault']),
+      fuelOpts: facet('fuels', 'fuel', ['Benzín', 'Diesel', 'LPG', 'Hybrid']),
+      gearOpts: facet('gears', 'gear', ['Manuál', 'Automat']),
+      bodyOpts: facet('bodies', 'body', ['Hatchback', 'Sedan', 'Liftback', 'Kombi', 'MPV', 'SUV']),
+      priceMin: pMin != null ? fmt(pMin) : '', priceMax: pMax != null ? fmt(pMax) : '',
+      priceSlider: pMax != null ? Math.min(pMax, 150000) : 150000,
+      priceSummary: pMax != null ? 'do ' + fmt(pMax) + ' Kč' : '',
+      setPriceMin: (e) => this.setState({ priceMin: e.target.value.replace(/\D/g, '') }),
+      setPriceMax: (e) => this.setState({ priceMax: e.target.value.replace(/\D/g, '') }),
+      slidePrice: (e) => { const v = parseInt(e.target.value, 10); this.setState({ priceMax: v >= 150000 ? '' : String(v) }); },
+      yearFrom: st.yearFrom, yearTo: st.yearTo,
+      setYearFrom: (e) => this.setState({ yearFrom: e.target.value }),
+      setYearTo: (e) => this.setState({ yearTo: e.target.value }),
+      kmMax: st.kmMax, kmLabel: st.kmMax < 600000 ? 'do ' + fmt(st.kmMax) + ' km' : '',
+      slideKm: (e) => this.setState({ kmMax: parseInt(e.target.value, 10) }),
+      sort: st.sort, setSort: (e) => this.setState({ sort: e.target.value }),
+      cars, empty: n === 0, total: CARS.length,
+      countLabel: n + ' ' + word,
+      active, hasActive: active.length > 0,
+      reset: () => this.setState(Object.assign({}, this.initial))
+    };
+  }
+}
+</script>
+</body>
+</html>

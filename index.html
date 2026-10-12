@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Auto Bazar — homepage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Auto Bazar Teplice — levná ověřená ojetá auta. Ukázkový návrh webu.">
+<link rel="icon" href="/favicon.svg">
+<script src="/morphdom.min.js"></script>
+<script src="/dc-runtime.js"></script>
+</head>
+<body>
+<template id="dc-tpl">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#f6f5f1}
+a{color:#121212;text-decoration:none}a:hover{color:#121212}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #121212; background: #f6f5f1; font-size: 15px; line-height: 22px;">
+
+<div style="background: #121212; color: #b9b4ab; font-size: 13px; line-height: 18px;">
+<div style="max-width: 1216px; margin: 0 auto; padding: 11px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px;">
+<span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4cc27f; box-shadow: 0 0 0 3px rgba(76,194,127,.25);"></span><strong style="color: #ffffff; font-weight: 600;">Otevřeno</strong> dnes 8:00–18:00</span>
+<span>Ukázková 123, 415 01 Teplice</span>
+<span style="flex-grow: 1;"></span>
+<a href="tel:+420123456789" style="color: #ffffff; font-weight: 600;">+420 123 456 789</a>
+<a href="tel:+420987654321" style="color: #ffffff; font-weight: 600;">+420 987 654 321</a>
+</div>
+</div>
+
+<header style="background: #ffffff; border-bottom: 1px solid #e4e0d8;">
+<div style="max-width: 1216px; margin: 0 auto; padding: 16px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px;">
+<a href="/" aria-label="Auto Bazar — úvod" style="line-height: 0;"><span role="img" aria-label="Auto Bazar" style="display: inline-flex; height: 42px; border: 3px solid #f6c445; border-radius: 2px; overflow: hidden; box-sizing: border-box; font-family: Montserrat, sans-serif; font-size: 22px; line-height: 1; letter-spacing: .5px;"><span style="background: #ffffff; color: #121212; font-weight: 800; padding: 0 10px; display: flex; align-items: center;">AUTO</span><span style="background: #f6c445; color: #121212; font-weight: 400; padding: 0 10px 0 9px; display: flex; align-items: center;">BAZAR</span></span></a>
+<nav aria-label="Hlavní menu" style="display: flex; flex-wrap: wrap; gap: 4px; flex-grow: 1;">
+<a href="/vypis" style="font-weight: 600; padding: 10px 14px; box-shadow: inset 0 -3px 0 #f6c445;">Nabídka vozů</a>
+<a href="#vykup" style="font-weight: 600; padding: 10px 14px;">Výkup aut</a>
+<a href="#" style="font-weight: 600; padding: 10px 14px;">Financování</a>
+<a href="#cebia" style="font-weight: 600; padding: 10px 14px;">Prověření Cebia</a>
+<a href="#kontakt" style="font-weight: 600; padding: 10px 14px;">Kontakt</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 8px;">
+<button type="button" aria-label="Hledat" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #e4e0d8; background: #ffffff; display: grid; place-items: center; cursor: pointer; color: #121212;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+<button type="button" aria-label="Oblíbené vozy" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #e4e0d8; background: #ffffff; display: grid; place-items: center; cursor: pointer; color: #121212;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"></path></svg></button>
+<a href="tel:+420123456789" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 10px; background: #f6c445; color: #121212; font-weight: 700; font-size: 14px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>Zavolat</a>
+</div>
+</div>
+</header>
+
+<section aria-roledescription="carousel" aria-label="Hlavní nabídka" onMouseEnter="{{pause}}" onMouseLeave="{{resume}}" style="position: relative; background: #121212; color: #ffffff; height: 640px; overflow: hidden;">
+<sc-for list="{{slides}}" as="s" hint-placeholder-count="1">
+<div role="group" aria-roledescription="slide" aria-label="{{s.label}}" aria-hidden="{{s.hidden}}" style="position: absolute; inset: 0; opacity: {{s.opacity}}; transition: opacity .7s ease; pointer-events: {{s.pe}};">
+<img src="{{s.img}}" alt="{{s.alt}}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: {{s.pos}}; transform: scale({{s.zoom}}); transition: transform 7s ease-out; display: block;">
+<div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,10,.88) 0%, rgba(10,10,10,.62) 34%, rgba(10,10,10,.12) 62%, rgba(10,10,10,0) 100%);"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 200px; background: linear-gradient(0deg, rgba(10,10,10,.55), rgba(10,10,10,0));"></div>
+<div style="position: relative; max-width: 1216px; margin: 0 auto; padding: 88px 32px 0; box-sizing: border-box;">
+<div style="max-width: 560px;">
+<span style="display: inline-block; background: #f6c445; color: #121212; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; line-height: 20px; padding: 6px 14px; transform: rotate(-2deg);">{{s.tape}}</span>
+<h1 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: clamp(40px, 5vw, 62px); line-height: 1.06; letter-spacing: -1.5px; margin: 24px 0 16px; text-shadow: 0 2px 24px rgba(0,0,0,.35);"><span style="display: block;">{{s.l1}}</span>{{s.l2}} <span style="display: inline-block; background: #f6c445; color: #121212; padding: 0 8px; transform: rotate(-1.5deg); text-shadow: none;">{{s.mark}}</span></h1>
+<p style="font-size: 18px; line-height: 28px; color: #e2ded6; margin: 0 0 32px; max-width: 470px;">{{s.text}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a href="{{s.ctaHref}}" style="display: inline-flex; align-items: center; gap: 8px; height: 56px; padding: 0 30px; border-radius: 10px; background: #f6c445; color: #121212; font-weight: 700; font-size: 16px;">{{s.cta}} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="{{s.cta2Href}}" style="display: inline-flex; align-items: center; gap: 8px; height: 56px; padding: 0 26px; border-radius: 10px; border: 2px solid rgba(255,255,255,.5); background: rgba(18,18,18,.25); color: #ffffff; font-weight: 700; font-size: 16px;">{{s.cta2}}</a>
+</div>
+</div>
+</div>
+</div>
+</sc-for>
+<div style="position: absolute; left: 0; right: 0; bottom: 124px;">
+<div style="max-width: 1216px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+<div style="display: flex; align-items: center; gap: 8px;">
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="3">
+<button type="button" onClick="{{d.go}}" aria-label="{{d.label}}" aria-current="{{d.current}}" style="width: 44px; height: 44px; border: 0; background: transparent; padding: 0; cursor: pointer; display: grid; place-items: center;"><span style="display: block; width: 36px; height: 4px; border-radius: 2px; background: {{d.bg}};"></span></button>
+</sc-for>
+<span style="font-size: 13px; font-weight: 600; color: #e2ded6; margin-left: 6px;">{{slideNo}} / 3</span>
+</div>
+<div style="display: flex; gap: 8px;">
+<button type="button" onClick="{{prev}}" aria-label="Předchozí" style="width: 48px; height: 48px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); background: rgba(18,18,18,.45); color: #ffffff; display: grid; place-items: center; cursor: pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+<button type="button" onClick="{{next}}" aria-label="Další" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: #f6c445; color: #121212; display: grid; place-items: center; cursor: pointer;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+</div>
+</section>
+
+<div style="max-width: 1216px; margin: -96px auto 0; padding: 0 32px; position: relative;">
+<form role="search" style="background: #ffffff; border-radius: 16px; box-shadow: 0 12px 40px rgba(18,18,18,.16); padding: 24px; color: #121212;">
+<div role="tablist" style="display: flex; gap: 24px; border-bottom: 1px solid #e4e0d8; margin-bottom: 24px;">
+<button type="button" role="tab" aria-selected="{{buyTab}}" onClick="{{showBuy}}" style="background: none; border: 0; border-bottom: 3px solid {{buyLine}}; padding: 0 0 12px; margin-bottom: -1px; font: 700 15px/20px Inter, sans-serif; color: {{buyColor}}; cursor: pointer;">Koupit auto</button>
+<button type="button" role="tab" aria-selected="{{sellTab}}" onClick="{{showSell}}" style="background: none; border: 0; border-bottom: 3px solid {{sellLine}}; padding: 0 0 12px; margin-bottom: -1px; font: 700 15px/20px Inter, sans-serif; color: {{sellColor}}; cursor: pointer;">Prodat auto</button>
+</div>
+<sc-if value="{{buyTab}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+<label style="flex: 1.4 1 220px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Značka a model
+<select style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 14px; font: 500 15px Inter, sans-serif; color: #121212;"><option>Všechny značky</option><option>Škoda</option><option>Volkswagen</option><option>Opel</option><option>Seat</option></select></label>
+<label style="flex: 1 1 150px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Cena do
+<select style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 14px; font: 500 15px Inter, sans-serif; color: #121212;"><option>Libovolná</option><option>30 000 Kč</option><option>50 000 Kč</option><option>100 000 Kč</option></select></label>
+<label style="flex: 1 1 150px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Rok od
+<select style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 14px; font: 500 15px Inter, sans-serif; color: #121212;"><option>Libovolný</option><option>2005</option><option>2010</option><option>2015</option></select></label>
+<label style="flex: 1 1 150px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Palivo
+<select style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; background: #ffffff; padding: 0 14px; font: 500 15px Inter, sans-serif; color: #121212;"><option>Všechna</option><option>Benzín</option><option>Diesel</option><option>LPG</option></select></label>
+<a href="/vypis" style="flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 10px; background: #f6c445; color: #121212; font-weight: 700;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>Hledat vozy</a>
+</div>
+</sc-if>
+<sc-if value="{{sellTab}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+<label style="flex: 1.4 1 220px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Značka a model
+<input placeholder="např. Škoda Octavia" style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; padding: 0 14px; font: 500 15px Inter, sans-serif; color: #121212;"></label>
+<label style="flex: 1 1 150px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Rok výroby
+<input placeholder="2012" style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; padding: 0 14px; font: 500 15px Inter, sans-serif; color: #121212;"></label>
+<label style="flex: 1 1 150px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">Telefon
+<input type="tel" placeholder="+420" style="height: 48px; border-radius: 10px; border: 1px solid #8a8478; padding: 0 14px; font: 500 15px Inter, sans-serif; color: #121212;"></label>
+<a href="#vykup" style="flex: 0 0 auto; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 10px; background: #121212; color: #ffffff; font-weight: 700;">Chci nabídku výkupu</a>
+</div>
+</sc-if>
+</form>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; padding-top: 32px;">
+<div style="display: flex; gap: 12px; align-items: flex-start;"><span style="width: 44px; height: 44px; flex: none; border-radius: 10px; background: #fff4d6; display: grid; place-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span><div><div style="font-weight: 700;">Prověřeno Cebia</div><div style="font-size: 14px; line-height: 20px; color: #5c5850;">Historii vozu si ověříte ještě před koupí.</div></div></div>
+<div style="display: flex; gap: 12px; align-items: flex-start;"><span style="width: 44px; height: 44px; flex: none; border-radius: 10px; background: #fff4d6; display: grid; place-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"></path><circle cx="7" cy="7" r="1.5"></circle></svg></span><div><div style="font-weight: 700;">Levná auta</div><div style="font-size: 14px; line-height: 20px; color: #5c5850;">Největší výběr levných aut v Teplicích.</div></div></div>
+<div style="display: flex; gap: 12px; align-items: flex-start;"><span style="width: 44px; height: 44px; flex: none; border-radius: 10px; background: #fff4d6; display: grid; place-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4"></path><path d="M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4"></path><path d="M21 13v2a3 3 0 0 1-3 3H3"></path></svg></span><div><div style="font-weight: 700;">Výkup i protiúčet</div><div style="font-size: 14px; line-height: 20px; color: #5c5850;">Vaše staré auto vykoupíme nebo započteme.</div></div></div>
+<div style="display: flex; gap: 12px; align-items: flex-start;"><span style="width: 44px; height: 44px; flex: none; border-radius: 10px; background: #fff4d6; display: grid; place-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><div><div style="font-weight: 700;">Otevřeno Po–So</div><div style="font-size: 14px; line-height: 20px; color: #5c5850;">Přijeďte bez objednání na prohlídku.</div></div></div>
+</div>
+</div>
+
+<section style="max-width: 1216px; margin: 0 auto; padding: 80px 32px 0;">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 32px;">
+<div><h2 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 28px; line-height: 34px; letter-spacing: -.4px; margin: 0;">Vyberte si auto u nás</h2><p style="margin: 6px 0 0; color: #5c5850;">Podle ceny, karoserie nebo převodovky — rovnou s vyfiltrovanou nabídkou.</p></div>
+<a href="/vypis" style="font-weight: 700; box-shadow: inset 0 -2px 0 #f6c445; padding-bottom: 2px;">Všechny vozy →</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+<sc-for list="{{tiles}}" as="c" hint-placeholder-count="10">
+<a href="/vypis" style="background: #ffffff; border: 1px solid #e4e0d8; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 2px rgba(18,18,18,.06), 0 4px 16px rgba(18,18,18,.06);">
+<span style="position: relative; display: block; aspect-ratio: 3 / 2; background: {{c.bg}}; padding: 12px 10px 0; box-sizing: border-box;">
+<img src="{{c.img}}" alt="" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+<sc-if value="{{c.price}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; right: 12px; top: 12px; background: #f6c445; color: #121212; border-radius: 10px; padding: 6px 12px 7px; transform: rotate(-4deg); box-shadow: 0 6px 16px rgba(18,18,18,.25); text-align: center;"><span style="display: block; font-size: 11px; line-height: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;">do</span><span style="display: block; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 22px; line-height: 24px;">{{c.price}}</span><span style="display: block; font-size: 11px; line-height: 14px; font-weight: 700;">tis. Kč</span></span></sc-if>
+</span>
+<span style="padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+<span><span style="display: block; font-weight: 700; font-size: 16px; line-height: 22px;">{{c.name}}</span><span style="display: block; font-size: 13px; line-height: 18px; color: #5c5850;"><strong style="color: #121212;">{{c.count}}</strong> vozů</span></span>
+<span style="width: 36px; height: 36px; flex: none; border-radius: 999px; background: #fff4d6; display: grid; place-items: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</span>
+</a>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 20px;">
+<span style="font-size: 13px; font-weight: 600; color: #5c5850; margin-right: 4px;">Další:</span>
+<a href="/vypis" style="height: 36px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #ffffff; border: 1px solid #e4e0d8; font-size: 14px; font-weight: 600;">Diesel</a>
+<a href="/vypis" style="height: 36px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #ffffff; border: 1px solid #e4e0d8; font-size: 14px; font-weight: 600;">Benzín</a>
+<a href="/vypis" style="height: 36px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #ffffff; border: 1px solid #e4e0d8; font-size: 14px; font-weight: 600;">LPG</a>
+<a href="/vypis" style="height: 36px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #ffffff; border: 1px solid #e4e0d8; font-size: 14px; font-weight: 600;">Tažné zařízení</a>
+<a href="/vypis" style="height: 36px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #ffffff; border: 1px solid #e4e0d8; font-size: 14px; font-weight: 600;">S odpočtem DPH</a>
+<a href="/vypis" style="height: 36px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: #ffffff; border: 1px solid #e4e0d8; font-size: 14px; font-weight: 600;">Prověřeno Cebia</a>
+</div>
+</section>
+
+<section style="max-width: 1216px; margin: 0 auto; padding: 80px 32px 0;">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 32px;">
+<div><h2 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 28px; line-height: 34px; letter-spacing: -.4px; margin: 0;">Nejnovější vozy</h2><p style="margin: 6px 0 0; color: #5c5850;">Čerstvě naskladněno na ploše v Teplicích.</p></div>
+<a href="/vypis" style="font-weight: 700; box-shadow: inset 0 -2px 0 #f6c445; padding-bottom: 2px;">Celá nabídka vozů →</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+<sc-for list="{{cars}}" as="car" hint-placeholder-count="6">
+<article style="background: #ffffff; border: 1px solid #e4e0d8; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(18,18,18,.06), 0 4px 16px rgba(18,18,18,.06); display: flex; flex-direction: column;">
+<a href="/detail" style="position: relative; display: block; aspect-ratio: 4 / 3; background: #ece9e2;">
+<img src="{{car.img}}" alt="{{car.alt}}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<sc-if value="{{car.badge}}" hint-placeholder-val="{{ true }}"><span style="position: absolute; left: 12px; top: 12px; height: 24px; display: inline-flex; align-items: center; padding: 0 8px; border-radius: 6px; font-size: 12px; font-weight: 700; background: {{car.badgeBg}}; color: {{car.badgeFg}};">{{car.badge}}</span></sc-if>
+</a>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
+<div><a href="/detail" style="font-weight: 700; font-size: 18px; line-height: 24px;">{{car.t}}</a><div style="font-size: 14px; line-height: 20px; color: #5c5850; margin-top: 2px;">{{car.s}}</div></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px;">
+<span style="background: #f6f5f1; border-radius: 6px; padding: 4px 8px; font-size: 13px; line-height: 16px; font-weight: 600;">{{car.y}}</span>
+<span style="background: #f6f5f1; border-radius: 6px; padding: 4px 8px; font-size: 13px; line-height: 16px; font-weight: 600;">{{car.km}} km</span>
+<span style="background: #f6f5f1; border-radius: 6px; padding: 4px 8px; font-size: 13px; line-height: 16px; font-weight: 600;">{{car.f}}</span>
+</div>
+<div style="margin-top: auto; padding-top: 12px; border-top: 1px solid #e4e0d8; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+<div><div style="font-size: 12px; line-height: 16px; font-weight: 600; color: #5c5850;">Cena</div><div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 24px; line-height: 28px; letter-spacing: -.3px;">{{car.p}} Kč</div></div>
+<a href="/detail" style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; border: 2px solid #8a8478; font-weight: 700; font-size: 14px;">Detail →</a>
+</div>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section id="cebia" style="max-width: 1216px; margin: 0 auto; padding: 80px 32px 0;">
+<div style="background: #122258; color: #ffffff; border-radius: 16px; padding: 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; border: 28px solid rgba(129,216,87,.14);"></div>
+<div style="flex: 1.2 1 420px; min-width: 0; position: relative;">
+<div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+<img src="/cebia-crop.png" alt="Cebia" style="height: 40px; width: auto; display: block;">
+<span style="height: 26px; display: inline-flex; align-items: center; padding: 0 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,.3); font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase;">Smluvní partner</span>
+</div>
+<h2 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 36px; line-height: 42px; letter-spacing: -.6px; margin: 0 0 12px;">Každé auto si prověříte ještě před koupí</h2>
+<p style="margin: 0 0 24px; color: #c9cfe3; font-size: 17px; line-height: 26px; max-width: 520px;">U každého vozu z naší nabídky ověříte jeho historii v databázi Cebia. Žádná překvapení po koupi.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; max-width: 520px;">
+<div style="display: flex; gap: 10px; align-items: center; font-weight: 600;"><span style="width: 22px; height: 22px; flex: none; border-radius: 50%; background: #81d857; display: grid; place-items: center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#122258" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span>Stav tachometru</div>
+<div style="display: flex; gap: 10px; align-items: center; font-weight: 600;"><span style="width: 22px; height: 22px; flex: none; border-radius: 50%; background: #81d857; display: grid; place-items: center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#122258" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span>Původ a historie</div>
+<div style="display: flex; gap: 10px; align-items: center; font-weight: 600;"><span style="width: 22px; height: 22px; flex: none; border-radius: 50%; background: #81d857; display: grid; place-items: center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#122258" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span>Kontrola odcizení</div>
+<div style="display: flex; gap: 10px; align-items: center; font-weight: 600;"><span style="width: 22px; height: 22px; flex: none; border-radius: 50%; background: #81d857; display: grid; place-items: center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#122258" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span>Leasing a zástavy</div>
+</div>
+</div>
+<form onsubmit="return false" style="flex: 1 1 340px; min-width: 0; background: #ffffff; color: #121212; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; position: relative; box-shadow: 0 12px 40px rgba(0,0,0,.25);">
+<div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 20px; line-height: 26px;">Prověřit podle VIN</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #5c5850;">
+<span style="display: flex; justify-content: space-between;"><span>VIN kód vozu</span><span style="color: {{vinCountColor}};">{{vinLen}} / 17</span></span>
+<input value="{{vin}}" onChange="{{setVin}}" maxlength="17" placeholder="např. TMBJF73T1B9012345" autocomplete="off" spellcheck="false" style="height: 52px; border-radius: 10px; border: 2px solid {{vinBorder}}; padding: 0 14px; font: 600 16px/1 ui-monospace, Menlo, monospace; letter-spacing: 1px; color: #121212; text-transform: uppercase;"></label>
+<a href="{{vinHref}}" aria-disabled="{{vinDisabled}}" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; border-radius: 10px; background: {{vinBtnBg}}; color: #122258; font-weight: 800; font-size: 16px; pointer-events: {{vinPointer}};">Prověřit auto v Cebia →</a>
+<div style="font-size: 13px; line-height: 18px; color: {{vinHintColor}};">{{vinHint}}</div>
+<div style="border-top: 1px solid #e4e0d8; padding-top: 12px; font-size: 14px;">Kupujete od nás? VIN najdete u každého vozu v <a href="/detail" style="font-weight: 700; box-shadow: inset 0 -2px 0 #f6c445;">detailu inzerátu</a>.</div>
+</form>
+</div>
+</section>
+
+<section id="vykup" style="max-width: 1216px; margin: 0 auto; padding: 80px 32px 0;">
+<div style="background: #121212; color: #ffffff; border-radius: 16px; overflow: hidden; display: flex; flex-wrap: wrap;">
+<div style="flex: 1.1 1 440px; padding: 56px; box-sizing: border-box;">
+<span style="display: inline-block; background: #f6c445; color: #121212; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 15px; line-height: 20px; padding: 6px 14px; transform: rotate(-2deg);">Výkup aut</span>
+<h2 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 40px; line-height: 44px; letter-spacing: -.8px; margin: 16px 0;">Prodejte nám<br>své auto</h2>
+<p style="color: #b9b4ab; font-size: 17px; line-height: 26px; margin: 0 0 32px; max-width: 440px;">Pošlete nám pár údajů a ozveme se s nabídkou. Auto vykoupíme, nebo ho započteme při koupi jiného vozu.</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+<div style="border-top: 2px solid rgba(255,255,255,.18); padding-top: 12px;"><div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 28px; line-height: 32px; color: #f6c445;">1</div><div style="font-size: 14px; line-height: 20px; font-weight: 600;">Pošlete údaje o voze</div></div>
+<div style="border-top: 2px solid rgba(255,255,255,.18); padding-top: 12px;"><div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 28px; line-height: 32px; color: #f6c445;">2</div><div style="font-size: 14px; line-height: 20px; font-weight: 600;">Prohlídka u nás v Teplicích</div></div>
+<div style="border-top: 2px solid rgba(255,255,255,.18); padding-top: 12px;"><div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 28px; line-height: 32px; color: #f6c445;">3</div><div style="font-size: 14px; line-height: 20px; font-weight: 600;">Platba a převod vozu</div></div>
+</div>
+</div>
+<form style="flex: .9 1 360px; background: #f6c445; color: #121212; padding: 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; justify-content: center;">
+<h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 22px; line-height: 28px; margin: 0 0 8px;">Nezávazná nabídka výkupu</h3>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600;">Značka a model<input placeholder="např. Škoda Octavia" style="height: 48px; border-radius: 10px; border: 1px solid rgba(18,18,18,.35); padding: 0 14px; font: 500 15px Inter, sans-serif;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600;">Rok výroby<input placeholder="2012" style="height: 48px; border-radius: 10px; border: 1px solid rgba(18,18,18,.35); padding: 0 14px; font: 500 15px Inter, sans-serif;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600;">Telefon<input type="tel" placeholder="+420" style="height: 48px; border-radius: 10px; border: 1px solid rgba(18,18,18,.35); padding: 0 14px; font: 500 15px Inter, sans-serif;"></label>
+<button type="button" style="height: 56px; border-radius: 10px; border: 0; background: #121212; color: #ffffff; font: 700 16px Inter, sans-serif; cursor: pointer;">Chci nabídku →</button>
+<span style="font-size: 13px; line-height: 18px;">Ozveme se v otevírací době, zpravidla ještě týž den.</span>
+</form>
+</div>
+</section>
+
+<section style="max-width: 1216px; margin: 0 auto; padding: 80px 32px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
+<div id="kontakt" style="background: #ffffff; border: 1px solid #e4e0d8; border-radius: 16px; padding: 32px;">
+<h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 22px; line-height: 28px; margin: 0 0 8px;">Přijeďte se podívat</h3>
+<p style="color: #5c5850; margin: 0 0 24px;">Ukázková 123, 415 01 Teplice</p>
+<div style="height: 160px; border-radius: 10px; margin-bottom: 24px; background-color: #ece9e2; background-image: linear-gradient(#e4e0d8 1px, transparent 1px), linear-gradient(90deg, #e4e0d8 1px, transparent 1px); background-size: 24px 24px; display: grid; place-items: center;"><span style="background: #121212; color: #ffffff; font-size: 13px; font-weight: 700; padding: 8px 12px; border-radius: 10px;">● Auto Bazar · Ukázková 123 [MAPA]</span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e4e0d8; font-weight: 700;"><span>Pondělí – pátek <span style="font-size: 11px; background: #f6c445; padding: 1px 6px; border-radius: 4px; margin-left: 6px;">dnes</span></span><span>8:00 – 18:00</span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e4e0d8;"><span>Sobota</span><span style="font-weight: 700;">9:00 – 12:00</span></div>
+<div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e4e0d8; margin-bottom: 24px;"><span>E-mail</span><a href="mailto:prodej@example.com" style="font-weight: 700; box-shadow: inset 0 -2px 0 #f6c445;">prodej@example.com</a></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a href="tel:+420123456789" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 10px; background: #f6c445; font-weight: 700;">+420 123 456 789</a>
+<a href="#" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 10px; border: 2px solid #8a8478; font-weight: 700;">Navigovat</a>
+</div>
+</div>
+</section>
+
+<footer style="background: #121212; color: #b9b4ab; margin-top: 80px; padding: 56px 0 32px; font-size: 14px; line-height: 22px;">
+<div style="max-width: 1216px; margin: 0 auto; padding: 0 32px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px;">
+<div><span role="img" aria-label="Auto Bazar" style="display: inline-flex; height: 42px; margin-bottom: 16px; border: 3px solid #f6c445; border-radius: 2px; overflow: hidden; box-sizing: border-box; font-family: Montserrat, sans-serif; font-size: 22px; line-height: 1; letter-spacing: .5px;"><span style="background: #ffffff; color: #121212; font-weight: 800; padding: 0 10px; display: flex; align-items: center;">AUTO</span><span style="background: #f6c445; color: #121212; font-weight: 400; padding: 0 10px 0 9px; display: flex; align-items: center;">BAZAR</span></span><div>Ukázková 123, 415 01 Teplice<br>+420 123 456 789 · +420 987 654 321<br><a href="mailto:prodej@example.com" style="color: #ffffff;">prodej@example.com</a><br>Po–Pá 8:00–18:00 · So 9:00–12:00</div></div>
+<div><div style="color: #ffffff; font-weight: 700; margin-bottom: 12px;">Nabídka</div><a href="/vypis" style="display: block; color: #b9b4ab; padding: 3px 0;">Všechny vozy</a><a href="/vypis" style="display: block; color: #b9b4ab; padding: 3px 0;">Auta do 50 000 Kč</a><a href="/vypis" style="display: block; color: #b9b4ab; padding: 3px 0;">Kombi</a><a href="/vypis" style="display: block; color: #b9b4ab; padding: 3px 0;">Automaty</a></div>
+<div><div style="color: #ffffff; font-weight: 700; margin-bottom: 12px;">Služby</div><a href="#vykup" style="display: block; color: #b9b4ab; padding: 3px 0;">Výkup aut</a><a href="#" style="display: block; color: #b9b4ab; padding: 3px 0;">Financování</a><a href="#cebia" style="display: block; color: #b9b4ab; padding: 3px 0;">Prověření Cebia</a></div>
+<div><div style="color: #ffffff; font-weight: 700; margin-bottom: 12px;">Auto Bazar</div><a href="#" style="display: block; color: #b9b4ab; padding: 3px 0;">O nás</a><a href="#kontakt" style="display: block; color: #b9b4ab; padding: 3px 0;">Kontakt</a><a href="https://www.facebook.com/" style="display: block; color: #b9b4ab; padding: 3px 0;">Facebook</a></div>
+</div>
+<div style="border-top: 1px solid rgba(255,255,255,.12); margin-top: 40px; padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px;"><span>© 2026 Auto Bazar Teplice</span><span>Ochrana osobních údajů · Cookies</span></div>
+<div style="margin-top: 12px; font-size: 12px; line-height: 18px; color: #8a8478;">Ukázková data. Fotografie vozů v nabídce: Wikimedia Commons — Thomas Doerfer (CC BY 3.0), Charles from Port Chester (CC BY 2.0), M 93 (volné užití s uvedením autora), Rudolf Stricker (CC BY-SA 3.0), Michel de Vries (CC BY-SA 3.0 DE).</div>
+</div>
+</footer>
+
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":4000}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { tab: 'buy', vin: '', slide: 0, paused: false }; }
+  componentDidMount() { this.timer = setInterval(() => { if (!this.state.paused) this.setState({ slide: (this.state.slide + 1) % 3 }); }, 7000); }
+  componentWillUnmount() { clearInterval(this.timer); }
+  renderVals() {
+    const buy = this.state.tab === 'buy';
+    const cur = this.state.slide;
+    const SL = [
+      { label: 'Levná auta', img: '/hero-1-fabia-drone.webp', alt: 'Žlutá Škoda Fabia Combi sama na prázdném parkovišti při západu slunce, pohled dronem', pos: '70% 45%', tape: 'Autobazar Teplice', l1: 'Levných aut', l2: 'má', mark: 'nejvíce.', text: 'Ověřená ojetá auta za férové ceny. Vyberte si online, přijeďte na projížďku a odjeďte ještě týž den.', cta: 'Prohlédnout nabídku', ctaHref: '/vypis', cta2: 'Zavolat 123 456 789', cta2Href: 'tel:+420123456789' },
+      { label: 'Výkup aut', img: '/hero-3-golf-garage.webp', alt: 'Stříbrný Volkswagen Golf v otevřené osvětlené garáži v noci po dešti', pos: '80% 45%', tape: 'Výkup aut', l1: 'Prodejte nám auto', l2: '', mark: 'ještě dnes.', text: 'Pošlete pár údajů, ozveme se s nabídkou. Auto vykoupíme, nebo ho započteme při koupi jiného vozu.', cta: 'Chci nabídku výkupu', ctaHref: '#vykup', cta2: 'Jak výkup probíhá', cta2Href: '#vykup' },
+      { label: 'Prověřeno Cebia', img: '/hero-2-focus-hills.webp', alt: 'Červený Ford Focus kombi na silničce v Českém středohoří za mlhavého svítání', pos: '75% 62%', tape: 'Smluvní partner Cebia', l1: 'Prověřené auto,', l2: '', mark: 'klidná hlava.', text: 'Historii každého vozu z naší nabídky si ověříte v databázi Cebia ještě před koupí.', cta: 'Prověřit VIN', ctaHref: '#cebia', cta2: 'Prověřené vozy', cta2Href: '/vypis' }
+    ];
+    const slides = SL.map((s, i) => Object.assign({}, s, { opacity: i === cur ? '1' : '0', pe: i === cur ? 'auto' : 'none', hidden: i === cur ? 'false' : 'true', zoom: i === cur ? '1.06' : '1' }));
+    const dots = SL.map((s, i) => ({ label: 'Zobrazit: ' + s.label, current: i === cur ? 'true' : 'false', bg: i === cur ? '#f6c445' : 'rgba(255,255,255,.45)', go: () => this.setState({ slide: i }) }));
+    const vin = this.state.vin;
+    const ok = vin.length === 17;
+    return {
+      slides, dots, slideNo: cur + 1,
+      next: () => this.setState({ slide: (cur + 1) % 3 }),
+      prev: () => this.setState({ slide: (cur + 2) % 3 }),
+      pause: () => this.setState({ paused: true }),
+      resume: () => this.setState({ paused: false }),
+      vin, vinLen: vin.length,
+      setVin: (e) => this.setState({ vin: e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, '').slice(0, 17) }),
+      vinCountColor: ok ? '#1e7a44' : '#5c5850',
+      vinBorder: ok ? '#81d857' : '#8a8478',
+      vinBtnBg: ok ? '#81d857' : '#dfe3ee',
+      vinPointer: ok ? 'auto' : 'none',
+      vinDisabled: ok ? 'false' : 'true',
+      vinHref: ok ? 'https://www.cebia.cz/' : '#cebia',
+      vinHint: ok ? 'VIN vypadá správně — otevřeme prověrku na webu Cebia.' : (vin.length ? 'VIN má 17 znaků, chybí ještě ' + (17 - vin.length) + '. Písmena I, O a Q se ve VIN nepoužívají.' : 'Najdete ho v technickém průkazu nebo pod čelním sklem.'),
+      vinHintColor: ok ? '#1e7a44' : '#5c5850',
+      buyTab: buy, sellTab: !buy,
+      buyLine: buy ? '#f6c445' : 'transparent', sellLine: buy ? 'transparent' : '#f6c445',
+      buyColor: buy ? '#121212' : '#5c5850', sellColor: buy ? '#5c5850' : '#121212',
+      showBuy: () => this.setState({ tab: 'buy' }),
+      showSell: () => this.setState({ tab: 'sell' }),
+      tiles: [
+        { name: 'Auta do 30 000 Kč', price: '30', count: '18', bg: '#fff4d6', img: '/01-fabia.webp' },
+        { name: 'Auta do 50 000 Kč', price: '50', count: '34', bg: '#f6f5f1', img: '/02-astra.webp' },
+        { name: 'Auta do 100 000 Kč', price: '100', count: '61', bg: '#f6f5f1', img: '/03-focus.webp' },
+        { name: 'SUV a crossovery', price: '', count: '12', bg: '#f6f5f1', img: '/04-karoq.webp' },
+        { name: 'Kombi', price: '', count: '27', bg: '#f6f5f1', img: '/05-superb-combi.webp' },
+        { name: 'Rodinné a MPV', price: '', count: '15', bg: '#f6f5f1', img: '/06-zafira.webp' },
+        { name: 'Hatchbacky', price: '', count: '31', bg: '#f6f5f1', img: '/07-leon.webp' },
+        { name: 'Sedany a liftbacky', price: '', count: '19', bg: '#f6f5f1', img: '/08-passat-b7.webp' },
+        { name: 'Automaty', price: '', count: '22', bg: '#f6f5f1', img: '/09-auris-hybrid.webp' },
+        { name: 'Užitkové vozy', price: '', count: '9', bg: '#f6f5f1', img: '/10-kangoo.webp' }
+      ],
+      cars: [
+        { img: '/passat11.webp', alt: 'Volkswagen Passat Variant 2012', t: 'Volkswagen Passat Variant', s: '2.0 TDI DSG · automat', y: '2012', km: '286 400', f: 'Diesel', p: '99 900', badge: 'Nově', badgeBg: '#f6c445', badgeFg: '#121212' },
+        { img: '/ibiza.webp', alt: 'Seat Ibiza 2008', t: 'Seat Ibiza', s: '1.4 16V · manuál', y: '2008', km: '152 300', f: 'Benzín', p: '34 900', badge: 'Nově', badgeBg: '#f6c445', badgeFg: '#121212' },
+        { img: '/passat06.webp', alt: 'Volkswagen Passat 2007', t: 'Volkswagen Passat', s: '1.9 TDI · manuál', y: '2007', km: '238 900', f: 'Diesel', p: '44 900', badge: '', badgeBg: '', badgeFg: '' },
+        { img: '/superb.webp', alt: 'Škoda Superb 2011', t: 'Škoda Superb', s: '2.0 TDI Elegance · manuál', y: '2011', km: '274 500', f: 'Diesel', p: '119 900', badge: 'Prověřeno Cebia', badgeBg: '#ffffff', badgeFg: '#1e7a44' },
+        { img: '/corsa.webp', alt: 'Opel Corsa 2003', t: 'Opel Corsa', s: '1.2 16V · manuál', y: '2003', km: '168 400', f: 'Benzín', p: '24 900', badge: 'Do 30 000 Kč', badgeBg: '#fff4d6', badgeFg: '#121212' },
+        { img: '/merc.webp', alt: 'Mercedes-Benz třída A 2006', t: 'Mercedes-Benz třída A', s: 'A 170 · automat', y: '2006', km: '142 700', f: 'Benzín', p: '49 900', badge: '', badgeBg: '', badgeFg: '' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
